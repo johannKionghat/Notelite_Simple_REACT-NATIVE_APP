@@ -1,21 +1,21 @@
 import { StatusBar } from 'expo-status-bar';
-import { StyleSheet, Text, View } from 'react-native';
+import { FlatList, StyleSheet, Text, TextInput, TouchableOpacity, View } from 'react-native';
 import "./global.css"; 
+import { useEffect, useState } from 'react';
+import * as SQLite from "expo-sqlite"
+import { Entypo, FontAwesome } from '@expo/vector-icons';
+import { SafeAreaView } from 'react-native-safe-area-context';
+import { NavigationContainer, useNavigation } from '@react-navigation/native';
+import Navigation from './navigation';
+import { DataProvider } from './context/dataContext';
 
 export default function App() {
-  return (
-    <View style={styles.container}>
-      <Text>Open up App.js to start working on your app!</Text>
-      <StatusBar style="auto" />
-    </View>
-  );
+  return(
+    <DataProvider>
+      <NavigationContainer>
+        <Navigation/>
+     </NavigationContainer>
+    </DataProvider>
+    
+  )
 }
-
-const styles = StyleSheet.create({
-  container: {
-    flex: 1,
-    backgroundColor: '#fff',
-    alignItems: 'center',
-    justifyContent: 'center',
-  },
-});
